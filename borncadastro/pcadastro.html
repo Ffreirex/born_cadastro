@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style2.css" />
+
+    <title>Born Cadastro</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>Criar conta</h2>
+        </div>
+
+        <form id="form" class="form" >
+            <div class="form-conteudo" >
+                <label for="username">Nome do usuário</label>
+                <input
+                type="text"
+                id="username"
+                placeholder="Digite o nome do usuário..."
+                />
+
+                <a>Mensagem de erro...</a>
+            </div>
+
+                <div class="form-conteudo">
+                    <label for="email">E-mail do usuário</label>
+                    <input
+                    type="text"
+                    autocomplete="email"
+                    id="email"
+                    placeholder="Digite o seu e-mail..."
+                    />
+    
+                    <a>Mensagem de erro...</a>
+                </div>
+
+                <div class="form-conteudo">
+                    <label for="celular">Celular com DDD</label>
+                    <input
+                    type="text"
+                    id="celular"
+                    placeholder="Digite o número de celular..."
+                    />
+    
+                    <a>Mensagem de erro...</a>
+                </div>
+
+
+                <div class="form-conteudo">
+                    <label for="password">Senha</label>
+                    <input
+                    type="type"
+                    id="password"
+                    placeholder="Digite sua senha..."
+                    />
+    
+                    <a>Mensagem de erro...</a>
+                </div>
+
+                    <div class="form-conteudo">
+                        <label for="password-confirmation">Confirmação de senha</label>
+                        <input
+                        type="password"
+                        id="password-confirmation"
+                        placeholder="Digite sua senha..."
+                        />
+        
+                        <a>Mensagem de erro...</a>
+                    </div>
+
+                    <button type=""submit>Cadastrar</button>
+
+
+        </form>
+
+    </div>
+
+
+    <script>
+        const form = document.getElementById("form");
+        const username = document.getElementById("username")
+        const email = document.getElementById("email")
+        const celular = document.getElementById("celular")
+        const password = document.getElementById("password")
+        const passwordConfirmation = document.getElementById("password-confirmation");
+
+
+        form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        checkForm();
+        })
+
+        email.addEventListener("blur", () => {
+        checkInputEmail();
+        })
+
+
+        username.addEventListener("blur", () => {
+        checkInputUsername();
+         })
+
+        celular.addEventListener("blur", () => {
+        checkInputCelular();
+        })
+
+
+        function checkInputUsername(){
+        const usernameValue = username.value;
+
+        if(usernameValue === ""){
+        errorInput(username, "Nome é obrigatório")
+             }else{
+        const formItem = username.parentElement;
+        formItem.className = "form-conteudo"
+         }
+
+        }
+
+         function checkInputEmail(){
+            const emailValue = email.value;
+
+        if(emailValue === ""){
+        errorInput(email, "O email é obrigatório.")
+        }else{
+        const formItem = email.parentElement;
+         formItem.className = "form-conteudo"
+        }
+         }
+
+         function checkInputCelular(){
+        const celularValue = celular.value;
+
+        if(celularValue === ""){
+        errorInput(celular, "Celular é obrigatório")
+        }else{
+        const formItem = celular.parentElement;
+        formItem.className = "form-conteudo"
+         }
+
+        }
+
+        function checkInputPassword(){
+        const passwordValue = password.value;
+
+        if(passwordValue === ""){
+         errorInput(password, "A senha é obrigatória.")
+         }else if(passwordValue.length < 8){
+        errorInput(password, "A senha precisa ter no mínimo 8 caracteres.")
+         }else{
+        const formItem = password.parentElement;
+         formItem.className = "form-conteudo"
+          }
+
+
+        }
+
+
+         function checkInputPasswordConfirmation(){
+          const passwordValue = password.value;
+          const confirmationPasswordValue = passwordConfirmation.value;
+
+        if(confirmationPasswordValue === ""){
+            errorInput(passwordConfirmation, "A confirmação de senha é obrigatória.")
+        }else if(confirmationPasswordValue !== passwordValue){
+            errorInput(passwordConfirmation, "As senhas não são iguais.")
+         }else{
+            const formItem = passwordConfirmation.parentElement;
+            formItem.className = "form-conteudo"
+        }
+
+
+        }
+
+
+        function checkForm(){
+        checkInputUsername();
+        checkInputEmail();
+        checkInputCelular();
+        checkInputPassword();
+        checkInputPasswordConfirmation();
+
+
+        const formItems = form.querySelectorAll(".form-conteudo")
+
+        const isValid = [...formItems].every( (item) => {
+         return item.className === "form-conteudo"
+        });
+
+        if(isValid){
+        alert("CADASTRADO COM SUCESSO!")
+        }
+
+        }
+
+
+        function errorInput(input, message){
+        const formItem = input.parentElement;
+        const textMessage = formItem.querySelector("a")
+
+        textMessage.innerText = message;
+
+        formItem.className = "form-conteudo error"
+
+        }
+
+        function resetar(){
+            document.getElementById("form").reset();
+        }
+    
+    </script>
+    
+</body>
+</html>

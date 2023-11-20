@@ -1,0 +1,84 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppons", sans-serif;
+
+}
+
+body{
+    background: rgb(23, 85, 90);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin: 14px;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: 0 3px 5px rgb(237, 237, 237);
+    overflow: hidden;
+}
+
+.header{
+    background: linear-gradient(120deg, rgb(67, 174, 188) 0%, rgb(44, 25, 68) 100% );
+    padding: 24px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.form{
+    padding: 18px;
+}
+
+.form-conteudo{
+    margin-bottom: 8px;
+    padding-bottom: 18px;
+    position: relative;
+}
+
+.form-conteudo label{
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form-conteudo input{
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    padding: 8px;
+    border: 2px solid rgb(186, 186, 186);
+}
+
+.form-conteudo a{
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    visibility: hidden; 
+}
+
+.form button{
+    background-color: rgb(35, 99, 100);
+    color: aliceblue;
+    width: 100%;
+    border-radius: 14px;
+    padding: 10px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 14px;
+}
+
+.form-conteudo.error input{
+    border-color: brown;
+}
+
+.form-conteudo.error a{
+    color: brown;
+    visibility: visible;
+}
